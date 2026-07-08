@@ -3,206 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 4 Week 2 | Right Triangle Solver</title>
+<title>Unit 4 Week 2 | Right Triangle Rescue</title>
 <style>
 body{font-family:Arial,sans-serif;background:#f6f9fb;color:#1f2933;margin:0;line-height:1.6}
-.wrap{max-width:1000px;margin:auto;padding:24px}
+.wrap{max-width:950px;margin:auto;padding:24px}
 .hero{background:#0f2d44;color:white;padding:24px;border-radius:12px}
 .card{background:white;border-left:6px solid #2f80a8;padding:20px;margin-top:18px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .green{border-left-color:#3ca65c;background:#eefaf1}
 .yellow{border-left-color:#f2b705;background:#fff8e6}
-.step{background:#f6f9fb;border:1px solid #d6e6ef;border-radius:8px;padding:16px;margin-top:14px}
 button{background:#0f2d44;color:white;border:0;border-radius:8px;padding:12px 18px;font-size:16px;cursor:pointer;margin:6px}
 button:hover{background:#174766}
-input,textarea,select{padding:10px;border:1px solid #b8c7d1;border-radius:6px;font-size:16px;width:95%;max-width:620px}
-textarea{min-height:80px}
-.small{max-width:180px}
+.choice{display:block;width:100%;text-align:left;background:#2f80a8;margin:8px 0}
+input{padding:10px;border:1px solid #b8c7d1;border-radius:6px;font-size:16px;max-width:180px;width:90%}
 .hidden{display:none}
 .feedback{font-weight:bold;margin-top:12px}
-.wrong{color:#b42318}
 .correct{color:#227a3b}
+.wrong{color:#b42318}
+.bar{height:18px;background:#d6e6ef;border-radius:10px;overflow:hidden;margin-top:12px}
+.fill{height:100%;background:#3ca65c;width:0%}
 .stars{font-size:34px;color:#f2b705}
 svg{max-width:100%;height:auto}
 </style>
 </head>
+
 <body>
 <div class="wrap">
 
 <div class="hero">
 <h1>Geometry | Unit 4 | Week 2</h1>
-<p>Self-Check Extra Practice — Right Triangle Solver</p>
+<p>Self-Check Extra Practice — Right Triangle Rescue</p>
 </div>
 
 <div id="start" class="card">
-<h2>Right Triangle Solver</h2>
-<p>Use trigonometry to solve missing sides, missing angles, and complete right triangles.</p>
-<input id="studentName" placeholder="First and last name">
-<br>
-<button onclick="startActivity()">Start Solver</button>
-<p id="nameError" class="feedback wrong"></p>
+<h2>Right Triangle Rescue!</h2>
+<p>Solve five right-triangle challenges. Use trig ratios, inverse trig, and your calculator in degree mode.</p>
+<button onclick="startGame()">Start Rescue Mission</button>
 </div>
 
-<div id="activity" class="card hidden">
-<h2>Complete All 5 Investigations</h2>
-
-<svg width="100%" height="280" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
-<rect width="900" height="280" fill="#f6f9fb"/>
-<polygon points="250,220 700,220 250,70" fill="#ffffff" stroke="#0f2d44" stroke-width="4"/>
-<line x1="250" y1="70" x2="700" y2="220" stroke="#2f80a8" stroke-width="7"/>
-<line x1="250" y1="220" x2="700" y2="220" stroke="#3ca65c" stroke-width="7"/>
-<line x1="250" y1="70" x2="250" y2="220" stroke="#d9534f" stroke-width="7"/>
-<path d="M250 190 L280 190 L280 220" fill="none" stroke="#0f2d44" stroke-width="4"/>
-<text x="710" y="245" font-size="24" font-weight="bold" fill="#0f2d44">θ</text>
-<text x="450" y="35" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold" fill="#0f2d44">Use SOH-CAH-TOA and inverse trig carefully.</text>
-</svg>
-
-<div class="step" id="step1">
-<h3>Investigation 1: Find a Missing Side</h3>
-<p>A right triangle has a <strong>36°</strong> reference angle and hypotenuse <strong>20</strong>. Find the side opposite the angle.</p>
-<p>Choose the ratio:</p>
-<select id="ratio1">
-<option value="">Choose one</option>
-<option value="sin">Sine</option>
-<option value="cos">Cosine</option>
-<option value="tan">Tangent</option>
-</select>
-<p>Missing side, rounded to the nearest tenth:</p>
-<input id="ans1" class="small">
-<p>Explain why you chose that ratio:</p>
-<textarea id="explain1"></textarea>
-</div>
-
-<div class="step" id="step2">
-<h3>Investigation 2: Find a Missing Angle</h3>
-<p>A right triangle has opposite side <strong>9</strong> and adjacent side <strong>12</strong>. Find the reference angle θ.</p>
-<p>Choose the inverse trig function:</p>
-<select id="ratio2">
-<option value="">Choose one</option>
-<option value="asin">sin⁻¹</option>
-<option value="acos">cos⁻¹</option>
-<option value="atan">tan⁻¹</option>
-</select>
-<p>Angle measure, rounded to the nearest tenth:</p>
-<input id="ans2" class="small">
-<p>Explain why inverse trig is needed:</p>
-<textarea id="explain2"></textarea>
-</div>
-
-<div class="step" id="step3">
-<h3>Investigation 3: Solve the Right Triangle</h3>
-<p>A right triangle has one acute angle of <strong>40°</strong> and adjacent side <strong>9</strong>.</p>
-<p>Opposite side, rounded to the nearest tenth:</p>
-<input id="opp3" class="small">
-<p>Hypotenuse, rounded to the nearest tenth:</p>
-<input id="hyp3" class="small">
-<p>Other acute angle:</p>
-<input id="angle3" class="small">
-</div>
-
-<div class="step" id="step4">
-<h3>Investigation 4: Choose the Best Method</h3>
-<p>You know the adjacent side and hypotenuse, and you need to find a missing angle. Which tool should you use first?</p>
-<select id="method4">
-<option value="">Choose one</option>
-<option value="sin">sin</option>
-<option value="cos">cos</option>
-<option value="tan">tan</option>
-<option value="acos">cos⁻¹</option>
-</select>
-<p>Explain your choice:</p>
-<textarea id="explain4"></textarea>
-</div>
-
-<div class="step" id="step5">
-<h3>Investigation 5: Error Analysis</h3>
-<p>A student wrote:</p>
-<div class="yellow" style="padding:12px;border-radius:8px;">
-<p><strong>tan θ = 12/5</strong></p>
-<p><strong>θ = tan(12/5)</strong></p>
-</div>
-<p>What mistake did the student make?</p>
-<textarea id="explain5"></textarea>
-</div>
-
-<div class="yellow" style="padding:16px;border-radius:8px;margin-top:18px;">
-<button onclick="completeInvestigation()">Complete Investigation</button>
-<p id="finalFeedback" class="feedback"></p>
-</div>
-
+<div id="game" class="card hidden">
+<h2 id="title"></h2>
+<p><strong>Progress:</strong> <span id="progressText"></span></p>
+<div class="bar"><div id="fill" class="fill"></div></div>
+<div id="questionBox"></div>
+<p id="feedback" class="feedback"></p>
 </div>
 
 <div id="done" class="card green hidden" style="text-align:center;">
 <div class="stars">★★★★★</div>
-<h2>Right Triangle Solver Complete!</h2>
-<p><strong>Student:</strong> <span id="completeName"></span></p>
-<p>You are ready for the Unit 4 Week 2 Prove It assignment.</p>
+<h2>Mission Complete!</h2>
+<p>You rescued all five right triangles.</p>
+<p><strong>Time:</strong> <span id="timeText"></span></p>
+<p>You are ready for the Unit 4 Week 2 Prove It!</p>
+<button onclick="startGame()">Play Again</button>
 </div>
 
 </div>
 
 <script>
-let student="";
+let current=0;
+let startTime=0;
+let challenges=[];
 
-function startActivity(){
-student=document.getElementById("studentName").value.trim();
-if(student.split(" ").length<2){
-document.getElementById("nameError").textContent="Please enter your first and last name.";
-return;
-}
-document.getElementById("start").classList.add("hidden");
-document.getElementById("activity").classList.remove("hidden");
+function shuffle(arr){
+  return arr.map(v=>({v,sort:Math.random()})).sort((a,b)=>a.sort-b.sort).map(({v})=>v);
 }
 
-function clean(v){return String(v).trim().toLowerCase();}
-function num(v){return Number(String(v).trim());}
-function close(v,target,tol=.15){return Math.abs(num(v)-target)<=tol;}
-
-function markStep(id,ok){
-const el=document.getElementById(id);
-el.style.border=ok?"2px solid #3ca65c":"2px solid #d9534f";
-el.style.background=ok?"#eefaf1":"#fff8e6";
+function choiceButtons(choices){
+  return shuffle(choices).map(c =>
+    `<button class="choice" onclick="check('${c.value}')">${c.label}</button>`
+  ).join("");
 }
 
-function has(text,words){return words.some(w=>text.includes(w));}
-
-function completeInvestigation(){
-let errors=[];
-
-let s1=document.getElementById("ratio1").value==="sin" && close(document.getElementById("ans1").value,11.8) &&
-clean(document.getElementById("explain1").value).length>=15 &&
-has(clean(document.getElementById("explain1").value),["opposite","hypotenuse","sine","sin"]);
-markStep("step1",s1); if(!s1)errors.push("Investigation 1");
-
-let s2=document.getElementById("ratio2").value==="atan" && close(document.getElementById("ans2").value,36.9) &&
-clean(document.getElementById("explain2").value).length>=15 &&
-has(clean(document.getElementById("explain2").value),["angle","inverse","tan"]);
-markStep("step2",s2); if(!s2)errors.push("Investigation 2");
-
-let s3=close(document.getElementById("opp3").value,7.6) && close(document.getElementById("hyp3").value,11.7) &&
-close(document.getElementById("angle3").value,50,0.1);
-markStep("step3",s3); if(!s3)errors.push("Investigation 3");
-
-let s4=document.getElementById("method4").value==="acos" &&
-clean(document.getElementById("explain4").value).length>=15 &&
-has(clean(document.getElementById("explain4").value),["adjacent","hypotenuse","angle","inverse","cos"]);
-markStep("step4",s4); if(!s4)errors.push("Investigation 4");
-
-let txt5=clean(document.getElementById("explain5").value);
-let s5=txt5.length>=15 && has(txt5,["inverse","tan-1","tan⁻¹","angle"]);
-markStep("step5",s5); if(!s5)errors.push("Investigation 5");
-
-const fb=document.getElementById("finalFeedback");
-if(errors.length===0){
-document.getElementById("activity").classList.add("hidden");
-document.getElementById("done").classList.remove("hidden");
-document.getElementById("completeName").textContent=student;
-document.getElementById("done").scrollIntoView({behavior:"smooth",block:"start"});
-}else{
-fb.className="feedback wrong";
-fb.innerHTML="Please review: <strong>"+errors.join(", ")+"</strong>. Then try completing the investigation again.";
+function startGame(){
+  current=0;
+  startTime=Date.now();
+  challenges=[
+    chooseRatioRound(),
+    missingSideRound(),
+    missingAngleRound(),
+    solveTriangleRound(),
+    errorDetectiveRound()
+  ];
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("done").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+  showChallenge();
 }
+
+function updateProgress(){
+  document.getElementById("progressText").textContent=`Round ${current+1} of 5`;
+  document.getElementById("fill").style.width=`${(current/5)*100}%`;
+}
+
+function showChallenge(){
+  updateProgress();
+  document.getElementById("feedback").textContent="";
+  const q=challenges[current];
+  document.getElementById("title").textContent=q.title;
+  document.getElementById("questionBox").innerHTML=q.html;
+}
+
+function check(value){
+  const q=challenges[current];
+  const fb=document.getElementById("feedback");
+  if(value===q.answer){
+    fb.textContent="Correct! Triangle rescued.";
+    fb.className="feedback correct";
+    setTimeout(nextChallenge,800);
+  }else{
+    fb.textContent="Try again. Think about the reference angle and SOH-CAH-TOA.";
+    fb.className="feedback wrong";
+  }
+}
+
+function checkNumber(inputId,target,tolerance=.15){
+  const val=Number(document.getElementById(inputId).value);
+  const fb=document.getElementById("feedback");
+  if(Math.abs(val-target)<=tolerance){
+    fb.textContent="Correct! Triangle rescued.";
+    fb.className="feedback correct";
+    setTimeout(nextChallenge,800);
+  }else{
+    fb.textContent="Try again. Check your calculator and make sure it is in degree mode.";
+    fb.className="feedback wrong";
+  }
+}
+
+function checkTriple(){
+  const opp=Number(document.getElementById("opp").value);
+  const hyp=Number(document.getElementById("hyp").value);
+  const angle=Number(document.getElementById("angle").value);
+  const fb=document.getElementById("feedback");
+  if(Math.abs(opp-7.6)<=.15 && Math.abs(hyp-11.7)<=.15 && Math.abs(angle-50)<=.1){
+    fb.textContent="Correct! You solved the whole triangle.";
+    fb.className="feedback correct";
+    setTimeout(nextChallenge,800);
+  }else{
+    fb.textContent="Try again. Recheck the opposite side, hypotenuse, and remaining angle.";
+    fb.className="feedback wrong";
+  }
+}
+
+function nextChallenge(){
+  current++;
+  if(current>=5){
+    const seconds=Math.floor((Date.now()-startTime)/1000);
+    const min=Math.floor(seconds/60);
+    const sec=seconds%60;
+    document.getElementById("game").classList.add("hidden");
+    document.getElementById("done").classList.remove("hidden");
+    document.getElementById("timeText").textContent=`${min}:${sec.toString().padStart(2,"0")}`;
+  }else{
+    showChallenge();
+  }
+}
+
+function triangleSVG(label){
+return `
+<svg width="100%" height="280" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
+<rect width="900" height="280" fill="#f6f9fb"/>
+<polygon points="250,220 700,220 250,70" fill="#fff" stroke="#0f2d44" stroke-width="4"/>
+<line x1="250" y1="70" x2="700" y2="220" stroke="#2f80a8" stroke-width="7"/>
+<line x1="250" y1="220" x2="700" y2="220" stroke="#3ca65c" stroke-width="7"/>
+<line x1="250" y1="70" x2="250" y2="220" stroke="#d9534f" stroke-width="7"/>
+<path d="M250 190 L280 190 L280 220" fill="none" stroke="#0f2d44" stroke-width="4"/>
+<path d="M650 220 Q620 190 590 195" fill="none" stroke="#f2b705" stroke-width="5"/>
+<text x="710" y="245" font-family="Arial" font-size="24" font-weight="bold" fill="#0f2d44">θ</text>
+<text x="450" y="35" text-anchor="middle" font-family="Arial" font-size="22" font-weight="bold" fill="#0f2d44">${label}</text>
+</svg>`;
+}
+
+function chooseRatioRound(){
+return{
+title:"Round 1: Choose the Ratio",
+answer:"cosine",
+html:`
+${triangleSVG("Known: adjacent and hypotenuse")}
+<p>You know the adjacent side and the hypotenuse. Which trig ratio should you use?</p>
+${choiceButtons([
+{label:"Sine",value:"sine"},
+{label:"Cosine",value:"cosine"},
+{label:"Tangent",value:"tangent"}
+])}`
+};
+}
+
+function missingSideRound(){
+return{
+title:"Round 2: Find the Missing Side",
+answer:"number",
+html:`
+${triangleSVG("36° angle, hypotenuse = 20")}
+<p>A right triangle has a 36° angle and hypotenuse 20. Find the side opposite the angle.</p>
+<p>Round to the nearest tenth.</p>
+<input id="sideAnswer" placeholder="Example: 11.8">
+<br>
+<button onclick="checkNumber('sideAnswer',11.8)">Check</button>
+<div class="yellow" style="padding:12px;border-radius:8px;margin-top:12px;">Hint: sin 36° = x / 20</div>`
+};
+}
+
+function missingAngleRound(){
+return{
+title:"Round 3: Find the Missing Angle",
+answer:"number",
+html:`
+${triangleSVG("Opposite = 9, Adjacent = 12")}
+<p>A right triangle has opposite side 9 and adjacent side 12. Find θ.</p>
+<p>Round to the nearest tenth.</p>
+<input id="angleAnswer" placeholder="Example: 36.9">
+<br>
+<button onclick="checkNumber('angleAnswer',36.9)">Check</button>
+<div class="yellow" style="padding:12px;border-radius:8px;margin-top:12px;">Hint: θ = tan⁻¹(9/12)</div>`
+};
+}
+
+function solveTriangleRound(){
+return{
+title:"Round 4: Solve the Triangle",
+answer:"triple",
+html:`
+${triangleSVG("40° angle, adjacent = 9")}
+<p>A right triangle has a 40° angle and adjacent side 9.</p>
+<p>Find the opposite side, hypotenuse, and other acute angle.</p>
+<p>Opposite side:</p>
+<input id="opp" placeholder="nearest tenth">
+<p>Hypotenuse:</p>
+<input id="hyp" placeholder="nearest tenth">
+<p>Other acute angle:</p>
+<input id="angle" placeholder="degrees">
+<br>
+<button onclick="checkTriple()">Check</button>`
+};
+}
+
+function errorDetectiveRound(){
+return{
+title:"Round 5: Error Detective",
+answer:"inverse",
+html:`
+<div class="yellow" style="padding:16px;border-radius:8px;">
+<p>A student wrote:</p>
+<p><strong>tan θ = 12 / 5</strong></p>
+<p><strong>θ = tan(12 / 5)</strong></p>
+</div>
+<p>What should the student have done instead?</p>
+${choiceButtons([
+{label:"Use inverse tangent: θ = tan⁻¹(12/5)",value:"inverse"},
+{label:"Use sine because sine always finds angles.",value:"sine"},
+{label:"Use the Pythagorean Theorem to find θ.",value:"pythagorean"},
+{label:"Divide 5 by 12 instead.",value:"divide"}
+])}`
+};
 }
 </script>
-
 </body>
 </html>
