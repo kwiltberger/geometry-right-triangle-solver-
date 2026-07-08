@@ -116,7 +116,7 @@ function check(value){
   }
 }
 
-function checkNumber(inputId,target,tolerance=.15){
+function checkNumber(inputId,target,tolerance=.15,message="Try again. Check your work and make sure your calculator is in Degree Mode."){
   const val=Number(document.getElementById(inputId).value);
   const fb=document.getElementById("feedback");
   if(Math.abs(val-target)<=tolerance){
@@ -124,7 +124,7 @@ function checkNumber(inputId,target,tolerance=.15){
     fb.className="feedback correct";
     setTimeout(nextChallenge,800);
   }else{
-    fb.textContent="Try again. Check your calculator and make sure it is in degree mode.";
+    fb.textContent=message;
     fb.className="feedback wrong";
   }
 }
@@ -139,7 +139,7 @@ function checkTriple(){
     fb.className="feedback correct";
     setTimeout(nextChallenge,800);
   }else{
-    fb.textContent="Try again. Recheck the opposite side, hypotenuse, and remaining angle.";
+    fb.textContent="Try again. Recheck the opposite side, hypotenuse, and remaining angle. Use Degree Mode.";
     fb.className="feedback wrong";
   }
 }
@@ -196,10 +196,9 @@ html:`
 ${triangleSVG("36° angle, hypotenuse = 20")}
 <p>A right triangle has a 36° angle and hypotenuse 20. Find the side opposite the angle.</p>
 <p>Round to the nearest tenth.</p>
-<input id="sideAnswer" placeholder="Example: 11.8">
+<input id="sideAnswer">
 <br>
-<button onclick="checkNumber('sideAnswer',11.8)">Check</button>
-<div class="yellow" style="padding:12px;border-radius:8px;margin-top:12px;">Hint: sin 36° = x / 20</div>`
+<button onclick="checkNumber('sideAnswer',11.8,.15,'Not quite. Check whether you used the correct trig ratio and verify that your calculator is in Degree Mode.')">Check</button>`
 };
 }
 
@@ -211,10 +210,9 @@ html:`
 ${triangleSVG("Opposite = 9, Adjacent = 12")}
 <p>A right triangle has opposite side 9 and adjacent side 12. Find θ.</p>
 <p>Round to the nearest tenth.</p>
-<input id="angleAnswer" placeholder="Example: 36.9">
+<input id="angleAnswer">
 <br>
-<button onclick="checkNumber('angleAnswer',36.9)">Check</button>
-<div class="yellow" style="padding:12px;border-radius:8px;margin-top:12px;">Hint: θ = tan⁻¹(9/12)</div>`
+<button onclick="checkNumber('angleAnswer',36.9,.15,'Not quite. Finding an angle requires an inverse trigonometric function. Check Degree Mode.')">Check</button>`
 };
 }
 
@@ -227,11 +225,11 @@ ${triangleSVG("40° angle, adjacent = 9")}
 <p>A right triangle has a 40° angle and adjacent side 9.</p>
 <p>Find the opposite side, hypotenuse, and other acute angle.</p>
 <p>Opposite side:</p>
-<input id="opp" placeholder="nearest tenth">
+<input id="opp">
 <p>Hypotenuse:</p>
-<input id="hyp" placeholder="nearest tenth">
+<input id="hyp">
 <p>Other acute angle:</p>
-<input id="angle" placeholder="degrees">
+<input id="angle">
 <br>
 <button onclick="checkTriple()">Check</button>`
 };
